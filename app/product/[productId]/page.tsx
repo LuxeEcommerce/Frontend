@@ -18,7 +18,7 @@ interface dataProps{
     image?: string;
 }
 
-const Categorylist: React.FC<dataProps> = () =>{
+const Categorylist: React.FC<{}> = () => {
     const searchParams = useSearchParams();
     const productId = searchParams.get("productId");    
     const [data, setData] = useState({} as dataProps);
