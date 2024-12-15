@@ -1,7 +1,5 @@
 'use client';
-import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 import {FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaPinterest} from "react-icons/fa"
 import React from "react";
 

@@ -3,12 +3,11 @@ import React from "react";
 import Image from "next/image";
 export interface BanneradsProps {
     split?: number;
-    imgList: string[];
     titleList: string[];
     descList: string[];
 }
 
-const Bannerads: React.FC<BanneradsProps> = ({split = 1, imgList, titleList, descList}) =>{
+const Bannerads: React.FC<BanneradsProps> = ({split = 1, titleList, descList}) =>{
 
     
     return(

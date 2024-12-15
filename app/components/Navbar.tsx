@@ -1,17 +1,12 @@
 'use client'
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect } from "react"
-import { FiShoppingCart, FiHeart, FiSearch, FiUser } from "react-icons/fi";
+import { useEffect } from "react"
+import { FiShoppingCart, FiSearch, FiUser } from "react-icons/fi";
 
 import React from "react";
 
-export interface NavbarProps {
-    // TODO
-}
-
-const Navbar: React.FC<NavbarProps> = () =>{
-    const [link, setLink] = useState<string>("");
+const Navbar: React.FC<{}> = () =>{
 
     useEffect(() => {
         const homeItem = document.getElementById("home-item");

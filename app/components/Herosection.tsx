@@ -7,17 +7,13 @@ import 'swiper/css';
 import 'swiper/core';
 import 'swiper/css/pagination';
 
-export interface HerosectionProps {
-    // TODO
-}
-
-const Herosection: React.FC<HerosectionProps> = () =>{
+const Herosection: React.FC<{}> = () =>{
     return(
         <div className="w-full mt-[85px] flex justify-between px-20 mb-10">
             <div className="border-r border-gray-300 pt-10 pr-20">
                 <ul>
-                    <li>Woman's Fashion</li>
-                    <li>Man's Fashion</li>
+                    <li>Woman&apos;s Fashion</li>
+                    <li>Man&apos;s Fashion</li>
                 </ul>
             </div>
             <div className="w-[70%] h-[400px] pt-10">

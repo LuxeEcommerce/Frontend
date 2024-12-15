@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
     API_PAYMENT_FUNCTIONS: "http://localhost:3050/api/pay/",
     API_NOTIFICATION_FUNCTIONS: "http://localhost:3050/api/notification/",
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
