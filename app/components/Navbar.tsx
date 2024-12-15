@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = () =>{
     return(
         <nav className="fixed top-0 left-0 pt-10 px-10 pb-5 w-full border border-b border-gray-300 z-50 bg-white">
             <div className="pc-nav flex justify-between px-10 w-full">
-                <Image src="/logo.svg" alt="logo" width={100} height={50} />                
+                <Image src="/logo.png" alt="logo" width={1980} height={1080} className="w-20" />
                 <ul className="flex space-x-10 text-black font-bold">
                     <li><Link id="home-item" className="border-b border-blue-800" href="/">Home</Link></li>
                     <li><Link id="product-item" href="/product">Product</Link></li>
@@ -55,8 +55,7 @@ const Navbar: React.FC<NavbarProps> = () =>{
                     <li><Link id="contact-item" href="/contact">Contact</Link></li>
                 </ul>
                 <div className="flex space-x-5">
-                    <FiSearch className="text-black text-2xl" />
-                    <Link href="/collection"><FiHeart className="text-black text-2xl" /></Link>
+                    <FiSearch className="text-black text-2xl" />                    
                     <Link href="/cart"><FiShoppingCart className="text-black text-2xl" /></Link>
                     <Link href="/profile"><FiUser className="text-black text-2xl" /></Link>
                 </div>

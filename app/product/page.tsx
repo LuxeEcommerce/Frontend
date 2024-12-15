@@ -34,6 +34,11 @@ export default function Product({ isDev=true, isFetching=false, btnState=false, 
     }
   }
 
+  const randomizeImage = () => {
+    const images = ["/prod1.png", "/prod2.png", "/prod3.png", "/prod4.png"];
+    return images[Math.floor(Math.random() * images.length)];
+  }
+
 
   useEffect(() => {
     fetchData();
@@ -68,7 +73,24 @@ export default function Product({ isDev=true, isFetching=false, btnState=false, 
           {data.map((product) => (
             <div key={product.productId} className="bg-white p-4">
               <div className="w-[200px] h-[200px]">
-                  <Image src={product.image || "/placehold.svg" } className="object-cover w-full h-[80%]" alt={product.productName} width={800} height={400} />
+                  {product.productName.includes("Hoodie") && (
+                    <Image 
+                      src={product.image || "/prod4.png"} 
+                      className="object-cover w-full h-[80%]" 
+                      alt={product.productName} 
+                      width={800} 
+                      height={400} 
+                    />
+                  )}
+                  {product.productName.includes("Product") && (
+                    <Image 
+                      src={product.image || randomizeImage()} 
+                      className="object-cover w-full h-[80%]" 
+                      alt={product.productName} 
+                      width={800} 
+                      height={400} 
+                    />
+                  )}
                   <button className="bg-black text-white w-full py-2" onClick={() => routeProduct(product.productId)}>Buy</button>
               </div>
               <div>

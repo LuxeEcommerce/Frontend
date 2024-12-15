@@ -37,13 +37,10 @@ const Herosection: React.FC<HerosectionProps> = () =>{
                 onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide>
-                    <Image src="/placehold.svg" className="object-cover h-[350px]" alt="hero1" width={800} height={400} />
+                    <Image src="/hero1.png" className="object-cover h-[350px]" alt="hero1" width={800} height={400} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src="/placehold.svg" className="object-cover h-[350px]" alt="hero2" width={800} height={400} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src="/placehold.svg" className="object-cover h-[350px]" alt="hero3" width={800} height={400} />                    
+                    <Image src="/hero2.png" className="object-cover h-[350px]" alt="hero2" width={800} height={400} />
                 </SwiperSlide>
             </Swiper>
             </div>

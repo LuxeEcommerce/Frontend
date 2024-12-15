@@ -9,6 +9,8 @@ export interface BanneradsProps {
 }
 
 const Bannerads: React.FC<BanneradsProps> = ({split = 1, imgList, titleList, descList}) =>{
+
+    
     return(
         <div>
             <div className="flex justify-between px-20">

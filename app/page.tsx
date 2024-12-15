@@ -9,7 +9,7 @@ export default function Home() {
     <div>
       <Navbar />
       <Herosection />
-      <Productlisting title="Flash Sale&apos;s" type="Today&apos;s" timer="2024-11-19T23:00:00Z"/>
+      <Productlisting title="Flash Sale&apos;s" type="Today&apos;s" timer="2025-02-19T23:00:00Z"/>
       <Productlisting title="Browse By Category" type="Categories" isCategory={true} />
       <Productlisting title="Best Selling Products" type="This Month" />   
       <Bannerads split={1} imgList={["/placehold.svg"]} titleList={["Shop Now"]} descList={["Get the best deals on our products"]} />

@@ -29,6 +29,19 @@ const Productlisting: React.FC<ProductlistingProps> = ({title, type, timer = "0"
     const [products, setProducts] = useState<any[]>([]);
     const [category, setCategory] = useState<any[]>([]);
 
+    const randomizeImage = (prodname : string) => {
+        const images = ["/prod1.png", "/prod2.png", "/prod3.png", "/prod4.png"];
+        if(prodname === "Product 1"){
+            return images[0];
+        }else if(prodname === "Product 2"){
+            return images[1];
+        }else if(prodname === "Product 3"){
+            return images[2];
+        }else{
+            return images[3];
+        }
+    }
+
     const interval = useRef<any>();
 
     const dummyData = [
@@ -37,42 +50,42 @@ const Productlisting: React.FC<ProductlistingProps> = ({title, type, timer = "0"
             name: "Product 1",
             price: 200000,
             rating: 4,
-            image: "/placehold.svg"
+            image: ""
         },
         {
             id: 2,
             name: "Product 2",
             price: 200000,
             rating: 4.5,
-            image: "/placehold.svg"
+            image: ""
         },
         {
             id: 3,
             name: "Product 3",
             price: 200000,
             rating: 4.5,
-            image: "/placehold.svg"
+            image: ""
         },
         {
             id: 4,
             name: "Product 4",
             price: 200000,
             rating: 4.5,
-            image: "/placehold.svg"
+            image: ""
         },
         {
             id: 5,
             name: "Product 5",
             price: 200000,
             rating: 4.5,
-            image: "/placehold.svg"
+            image: ""
         },
         {
             id: 6,
             name: "Product 6",
             price: 200000,
             rating: 4.5,
-            image: "/placehold.svg"
+            image: ""
         }
     ];
 
@@ -147,10 +160,11 @@ const Productlisting: React.FC<ProductlistingProps> = ({title, type, timer = "0"
             fetch(fetchUrl)
             .then(res => res.json())
             .then(data => setProducts(data))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));            
         }else{
             setProducts(dummyData);
         }
+
         
     }, []);
 
@@ -199,7 +213,7 @@ const Productlisting: React.FC<ProductlistingProps> = ({title, type, timer = "0"
                 {products.map((product) => (
                     <SwiperSlide key={product.id}>
                         <div className="w-[200px] h-[200px]">
-                            <Image src={product.image} className="object-cover w-full h-[80%]" alt={product.name} width={800} height={400} />
+                            <Image src={product.image || randomizeImage(product.name)} className="object-cover w-full h-[80%]" alt={product.name} width={800} height={400} />
                             <button className="bg-black text-white w-full py-2" onClick={addItemCart.bind(this, product.id)}>Add to Cart</button>
                         </div>
                         <div>
@@ -219,7 +233,7 @@ const Productlisting: React.FC<ProductlistingProps> = ({title, type, timer = "0"
                 {products.map((product) => (
                     <div key={product.id}>
                         <div className="w-[200px] h-[200px]">
-                            <Image src={product.image} className="object-cover w-full h-[80%]" alt={product.name} width={800} height={400} />
+                            <Image src={product.image || randomizeImage(product.name)} className="object-cover w-full h-[80%]" alt={product.name} width={800} height={400} />
                             <button className="bg-black text-white w-full py-2" onClick={addItemCart.bind(this, product.id)}>Add to Cart</button>
                         </div>
                         <div>
