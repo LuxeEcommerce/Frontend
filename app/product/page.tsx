@@ -4,13 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-interface Productprops {
-  isDev?: boolean; 
-  isFetching?: boolean;
-  btnState?: boolean;
-  addToCartUrl?: string;
-}
+import React from "react";
 
 interface dataProps {
   productId: number;
@@ -20,7 +14,7 @@ interface dataProps {
   image?: string;
 }
 
-export default function Product({ isDev=true, isFetching=false, btnState=false, addToCartUrl="" }: Productprops) {
+const Product: React.FC<{}> = () => {
   const [data, setData] = useState([] as dataProps[]);
   const [loading, setLoading] = useState(true);
 
@@ -106,3 +100,5 @@ export default function Product({ isDev=true, isFetching=false, btnState=false, 
     </div>    
   );
 }
+
+export default Product;
