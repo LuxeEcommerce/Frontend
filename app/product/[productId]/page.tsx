@@ -37,6 +37,10 @@ const Categorylist: React.FC<{}> = () => {
             console.log(err);
         }
     }
+    const randomizeImage = () => {
+        const images = ["/prod1.png", "/prod2.png", "/prod3.png", "/prod4.png"];
+        return images[Math.floor(Math.random() * images.length)];
+    }
     const addToCart = async (productId: number, amount : number) => {        
         try {            
             const res = await axios.post(process.env.API_USER_FUNCTIONS + `userfunc/addtocart/`, 
@@ -76,8 +80,8 @@ const Categorylist: React.FC<{}> = () => {
                     <Alertdialog title='Error' description='Please login to add items to cart!' state={error} setVisible={setError} additionalFunction={[directToLogin]}/>
                     {loading ? <div className='w-full bg-slate-300 animate-pulse justify-center h-80 flex items-center'><div>Loading...</div></div> : 
                     <div className="w-[90%] flex mb-24">
-                        <div className="w-1/2 border border-black">
-                            <Image src={data.image || 'placehold.svg'} alt={data.productName} width={500} height={500} className='border border-black' />
+                        <div className="w-1/2">
+                            <Image src={randomizeImage()} alt={data.productName} className='border border-black w-[500px] h-[500px] object-cover' />
                         </div>                     
                         <div className='w-1/2 border border-black px-10'>
                             <div className='border-b border-slate-600 pb-3'>

@@ -9,6 +9,16 @@ import Link from "next/link";
 
 export default function Profile() {
   const [profile, setProfile] = useState({} as any);
+  const [jwt, setJwt] = useState('');
+
+  const getToken = async () => {
+    for (const cookie of document.cookie.split('; ')) {
+      const [name, value] = cookie.split('=');
+      if (name === 'token') {
+        setJwt(value);
+      }
+    }
+  }
 
   const fetchProfile = async () => {
     try {
@@ -18,9 +28,10 @@ export default function Profile() {
 
       if(res.status === 200) {
         setProfile(res.data);
+        getToken();
       }
     } catch (error) {
-      console.log(error);
+      window.location.href = '/login';
     }
   }
 
@@ -53,7 +64,10 @@ export default function Profile() {
             </div>
             <div className="flex justify-between mt-5">
               <Link href="/order" className="bg-black text-white p-2 rounded-md cursor-pointer">My Order</Link>
-              <Link href="/cart" className="bg-black text-white p-2 rounded-md cursor-pointer">My Cart</Link>
+              <Link href="/cart" className="bg-black text-white p-2 rounded-md cursor-pointer">My Cart</Link>            
+              <form method="POST" action={process.env.API_AUTH + 'userauth/logout'}>
+                <button type="submit" className="bg-black text-white p-2 rounded-md cursor-pointer">Logout</button>
+              </form>
             </div>
           </div>
         </div>      

@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import React from "react";
 
 interface dataProps {
@@ -17,6 +17,7 @@ interface dataProps {
 const Product: React.FC<{}> = () => {
   const [data, setData] = useState([] as dataProps[]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const fetchData = async () => {
     try {
@@ -33,26 +34,21 @@ const Product: React.FC<{}> = () => {
     return images[Math.floor(Math.random() * images.length)];
   }
 
+  const searchProduct = async (productName: string) => {
+    try {
+      const res = await axios.post(process.env.API_PRODUCT_FUNCTIONS + `productfunc/product/search`,{
+        productName
+      });
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
   useEffect(() => {
     fetchData();
   }, []);
-
-  const generateStars = (rating: number) => {
-    let stars = [];
-    const maxStars = 5;
-
-    for (let i = 0; i < maxStars; i++) {
-        if (i < Math.floor(rating)) {
-            stars.push(<span key={i} className="text-yellow-500">★</span>);
-        } else if (i < rating) {
-            stars.push(<span key={i} className="text-yellow-500">☆</span>);
-        } else {
-            stars.push(<span key={i} className="text-yellow-300">★</span>);
-        }
-    }
-    return stars;
-  };
 
   const routeProduct = async (productId: number) => {
     window.location.href = `/product/item?productId=${productId}`;
@@ -63,6 +59,10 @@ const Product: React.FC<{}> = () => {
       <Navbar />      
       <div className="mt-32 w-full p-10">
         {loading && <div className="text-center text-3xl font-bold py-32 w-full h-52 bg-slate-300 animate-pulse">Loading...</div>}
+        <div className="flex">
+          <input type="text" placeholder="Search product" className="w-[80%] p-2 border border-gray-300 rounded-md" onChange={(e) => setSearch(e.target.value)} />
+          <button className="bg-black text-white w-[20%] py-2" onClick={() => searchProduct(search)}>Search</button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {data.map((product) => (
             <div key={product.productId} className="bg-white p-4">
@@ -79,15 +79,6 @@ const Product: React.FC<{}> = () => {
                   {product.productName.includes("Product") && (
                     <Image 
                       src={product.image || randomizeImage()} 
-                      className="object-cover w-full h-[80%]" 
-                      alt={product.productName} 
-                      width={800} 
-                      height={400} 
-                    />
-                  )}
-                  {product.productName.includes("Baju") && (
-                    <Image 
-                      src={product.image || "/prod2.png"} 
                       className="object-cover w-full h-[80%]" 
                       alt={product.productName} 
                       width={800} 

@@ -33,7 +33,7 @@ export default function Order() {
       });
 
       if(res.status === 200) {
-        console.log('Paypal order created');
+        window.open(res.data, '_blank');
       }
     } catch (error) {
       console.log(error);

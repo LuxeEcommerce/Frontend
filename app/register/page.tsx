@@ -8,13 +8,14 @@ import Image from 'next/image';
 export default function Login() {
   const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleRegister = async () => {
     try {
       const res = await axios.post(process.env.API_AUTH + 'userauth/register', {
         username: username,
-        password: password
+        password: password,
+        email: email,
       },
       {
         withCredentials: true,
@@ -23,8 +24,8 @@ export default function Login() {
         },
       });
 
-      if(res.status === 200) {
-        console.log('Login successful');
+      if(res.status === 201) {
+        window.location.href = '/login';
       }
     } catch (error) {
       console.log(error);
@@ -37,6 +38,10 @@ export default function Login() {
 
   const handlePasswordChange = (e: any) => {
     setPassword(e.target.value);
+  }
+
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
   }
 
   return (
@@ -56,8 +61,8 @@ export default function Login() {
                   <input type="password" id="password" className="border border-black p-2 mt-2" onChange={handlePasswordChange}/>
                 </div>
                 <div className="flex flex-col mt-5">
-                  <label htmlFor="phone" className="text-lg">Phone Number</label>
-                  <input type="text" id="phone" className="border border-black p-2 mt-2" onChange={(e) => setPhone(e.target.value)}/>
+                  <label htmlFor="email" className="text-lg">Email</label>
+                  <input type="text" id="email" className="border border-black p-2 mt-2" onChange={handleEmailChange}/>
                 </div>
                 <div className="flex mt-5">
                   <button onClick={handleRegister} className="bg-black text-white w-1/2 p-2 border hover:bg-white hover:text-black hover:shadow-md duration-150">Register</button>

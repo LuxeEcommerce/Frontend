@@ -23,7 +23,7 @@ export default function Login() {
       });
 
       if(res.status === 200) {
-        console.log('Login successful');
+        window.location.href = '/profile';
       }
     } catch (error) {
       console.log(error);

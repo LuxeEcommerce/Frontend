@@ -39,12 +39,6 @@ export default function Mycart() {
     } catch (error) {
       console.log(error);
     }
-
-    try {
-
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   const renderEmptyCart = () => {
@@ -57,7 +51,9 @@ export default function Mycart() {
 
   const createOrder = async () => {
     try {
-      const res = await axios.post(process.env.API_PAYMENT_FUNCTIONS + 'payment/makeorder', {
+      const res = await axios.post(process.env.API_PAYMENT_FUNCTIONS + 'payment/makeorder', 
+      {},
+      {        
         withCredentials: true,
       });
 
